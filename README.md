@@ -1,8 +1,12 @@
 # BusinessMatch - Business Acquisition Platform
 
 A modern, AI-powered platform connecting business buyers and sellers with streamlined acquisition workflows. Built with the MERN stack (MongoDB, Express.js, React, Node.js) and featuring a beautiful, approachable design.
-
 ## 🚀 Features
+![4F0C257F-F2D3-4AD3-8335-485B8FF61453](https://github.com/user-attachments/assets/94da9581-6a24-4957-97a9-08cfbbce0b0d)
+
+![1159F3B3-4480-4F85-B4FD-53C6FBC6D3FE](https://github.com/user-attachments/assets/4d6abfa1-e3f0-4e8f-aec8-dae56a2a1be1)
+
+![72A80F42-900F-4005-8A6F-4FC1ABA176E8](https://github.com/user-attachments/assets/fd036709-9ba7-4901-b681-934be4c47600)
 
 ### Core Platform
 - **Smart Matching**: AI-powered algorithms connect buyers and sellers based on preferences, industry, and deal criteria
