@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Business Marketplace Platform - Connect buyers and sellers"
+    />
+    <title>Business Marketplace</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f3f4f6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .btn {
+        background: #3b82f6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .btn:hover {
+        background: #2563eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+      function App() {
+        const [apiStatus, setApiStatus] = React.useState('Checking...');
+        const [apiData, setApiData] = React.useState(null);
+        const [registerStatus, setRegisterStatus] = React.useState('');
+        
+        React.useEffect(() => {
+          fetch('/api/health')
+            .then(response => response.json())
+            .then(data => setApiStatus('Connected'))
+            .catch(error => setApiStatus('Error: ' + error.message));
+        }, []);
+        
+        const handleCheckAPI = async () => {
+          try {
+            const response = await fetch('/api/test');
+            const data = await response.json();
+            setApiData(data);
+            alert('API Check Result:\n' + JSON.stringify(data, null, 2));
+          } catch (error) {
+            alert('API Check Failed: ' + error.message);
+          }
+        };
+        
+        const handleRegister = async () => {
+          setRegisterStatus('Registering...');
+          try {
+            // Simulate registration process
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Mock registration data
+            const userData = {
+              email: 'user@example.com',
+              name: 'Test User',
+              role: 'buyer',
+              timestamp: new Date().toISOString()
+            };
+            
+            setRegisterStatus('Registration successful!');
+            alert('Registration Successful!\n\nUser Data:\n' + JSON.stringify(userData, null, 2));
+          } catch (error) {
+            setRegisterStatus('Registration failed');
+            alert('Registration Failed: ' + error.message);
+          }
+        };
+        
+        return (
+          <div className="container">
+            <div className="header">
+              <h1>🏢 Business Marketplace Platform</h1>
+              <p>Connect buyers and sellers with streamlined acquisition workflows</p>
+            </div>
+            
+            <div className="card">
+              <h2>🚀 Welcome to Business Marketplace</h2>
+              <p>This is a digital platform connecting business buyers and sellers.</p>
+              <p><strong>API Status:</strong> {apiStatus}</p>
+              {registerStatus && <p><strong>Registration Status:</strong> {registerStatus}</p>}
+            </div>
+            
+            <div className="card">
+              <h3>Features</h3>
+              <ul>
+                <li>User Authentication & Registration</li>
+                <li>Buyer & Seller Dashboards</li>
+                <li>Deal Management</li>
+                <li>AI-Powered Matching</li>
+                <li>Profile Management</li>
+              </ul>
+            </div>
+            
+            <div className="card">
+              <h3>Quick Actions</h3>
+              <button className="btn" onClick={() => handleRegister()}>
+                Register
+              </button>
+              <button className="btn" onClick={() => handleCheckAPI()}>
+                Check API
+              </button>
+            </div>
+          </div>
+        );
+      }
+      
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "business-marketplace-platform",
+  "version": "1.0.0",
+  "description": "A digital platform connecting business buyers and sellers with streamlined acquisition workflows",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "business",
+    "marketplace",
+    "acquisition",
+    "mern",
+    "react",
+    "nodejs"
+  ],
+  "author": "Business Marketplace Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
